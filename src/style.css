@@ -1,0 +1,304 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ═══════════════════════════════════════════════
+   CALPE VIAL — Industrial Premium Design System
+   ═══════════════════════════════════════════════ */
+
+@theme {
+  --color-charcoal-950: #050506;
+  --color-charcoal-900: #0a0a0c;
+  --color-charcoal-800: #111114;
+  --color-charcoal-700: #1a1a1f;
+  --color-charcoal-600: #252530;
+  --color-charcoal-500: #3a3a48;
+  
+  --color-copper-50: #fef7ee;
+  --color-copper-100: #fde9cc;
+  --color-copper-200: #fbd196;
+  --color-copper-300: #f5b45e;
+  --color-copper-400: #f09a36;
+  --color-copper-500: #e87d15;
+  --color-copper-600: #d4640e;
+  --color-copper-700: #af4a10;
+  --color-copper-800: #8e3b14;
+  --color-copper-900: #743214;
+  
+  --color-steel-100: #e8e9ec;
+  --color-steel-200: #c8cad1;
+  --color-steel-300: #a4a7b2;
+  --color-steel-400: #7d8190;
+  --color-steel-500: #5e6272;
+  --color-steel-600: #4a4d5a;
+  --color-steel-700: #3b3e48;
+  
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+/* ── Base styles ── */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-charcoal-950);
+  color: var(--color-steel-100);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+::selection {
+  background-color: var(--color-copper-500);
+  color: var(--color-charcoal-950);
+}
+
+/* ── Grain texture overlay ── */
+
+.grain::after {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* ── Navbar ── */
+
+.navbar {
+  transition: background-color 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgba(5, 5, 6, 0.85);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(232, 125, 21, 0.1);
+}
+
+/* ── Hero Section ── */
+
+.hero-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(5, 5, 6, 0.6) 0%,
+    rgba(5, 5, 6, 0.3) 40%,
+    rgba(175, 74, 16, 0.15) 100%
+  );
+}
+
+.hero-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(232, 125, 21, 0.12) 0%, transparent 70%);
+  top: 20%;
+  right: -10%;
+  pointer-events: none;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ── Scroll Animations ── */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ── Service Cards ── */
+
+.service-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(58, 58, 72, 0.4);
+  transition: border-color 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(5, 5, 6, 0.95) 85%);
+  z-index: 1;
+  transition: background 0.5s ease;
+}
+
+.service-card:hover {
+  border-color: var(--color-copper-600);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px -15px rgba(232, 125, 21, 0.15);
+}
+
+.service-card:hover::before {
+  background: linear-gradient(180deg, transparent 20%, rgba(5, 5, 6, 0.98) 75%);
+}
+
+.service-card img {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.5s ease;
+  filter: brightness(0.7) saturate(0.8);
+}
+
+.service-card:hover img {
+  transform: scale(1.08);
+  filter: brightness(0.5) saturate(0.6);
+}
+
+.service-card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.service-card .service-details {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+}
+
+.service-card:hover .service-details {
+  max-height: 200px;
+  opacity: 1;
+}
+
+/* ── Stats counter ── */
+
+.stat-number {
+  background: linear-gradient(135deg, var(--color-copper-400), var(--color-copper-600));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Portfolio Logo Carousel ── */
+
+.logo-track {
+  display: flex;
+  gap: 3rem;
+  animation: scroll-logos 60s linear infinite;
+  width: max-content;
+}
+
+.logo-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scroll-logos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.logo-item {
+  flex-shrink: 0;
+  width: 120px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.logo-item:hover {
+  transform: scale(1.15);
+  filter: drop-shadow(0 10px 15px rgba(232, 125, 21, 0.2));
+}
+
+/* ── Divider line ── */
+
+.copper-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-copper-600), transparent);
+}
+
+/* ── Contact Form ── */
+
+.form-input {
+  background: rgba(26, 26, 31, 0.8);
+  border: 1px solid rgba(58, 58, 72, 0.5);
+  color: var(--color-steel-100);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--color-copper-500);
+  box-shadow: 0 0 0 3px rgba(232, 125, 21, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--color-steel-500);
+}
+
+/* ── WhatsApp floating button ── */
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: whatsapp-bounce 3s ease-in-out infinite;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+}
+
+@keyframes whatsapp-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* ── Responsive fixes ── */
+
+@media (max-width: 768px) {
+  .hero-glow {
+    width: 300px;
+    height: 300px;
+    top: 10%;
+    right: -20%;
+  }
+  
+  .logo-item {
+    width: 80px;
+    height: 40px;
+  }
+  
+  .logo-track {
+    gap: 2rem;
+  }
+}

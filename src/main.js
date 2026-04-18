@@ -11,7 +11,7 @@ function generateLogoImage(index) {
   const el = document.createElement('div');
   el.className = 'logo-item';
   el.innerHTML = `
-    <img src="/img/portfolio/portfolio-${index}.png" alt="Cliente Calpe ${index}" class="max-w-full max-h-full object-contain px-4 py-2" loading="lazy" />
+    <img src="${import.meta.env.BASE_URL}img/portfolio/portfolio-${index}.png" alt="Cliente Calpe ${index}" class="max-w-full max-h-full object-contain px-4 py-2" loading="lazy" />
   `;
   return el;
 }

@@ -215,8 +215,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .logo-item {
   flex-shrink: 0;
-  width: 120px;
-  height: 60px;
+  width: 150px;
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -294,8 +294,8 @@ h1, h2, h3, h4, h5, h6 {
   }
   
   .logo-item {
-    width: 80px;
-    height: 40px;
+    width: 100px;
+    height: 50px;
   }
   
   .logo-track {

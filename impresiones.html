@@ -7,50 +7,49 @@
   <title>Impresiones de Gran Formato | Calpe — Tunuyán, Mendoza</title>
   <meta name="description"
     content="Impresiones de gran formato con tecnología Mimaki en 160cm y 320cm. Vinilos, lonas, plotteo vehicular, letras corpóreas, corte láser. Tunuyán, Mendoza." />
-  <link rel="icon" type="image/png" href="img/favicon.png" />
+  <link rel="icon" type="image/png" href="img/logo/logo.png" />
 </head>
 
 <body class="grain">
 
   <!-- NAVBAR -->
-  <nav id="navbar" class="navbar scrolled fixed top-0 left-0 w-full z-50 px-6 py-4 lg:px-12">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="index.html" class="flex items-center gap-3 group">
-        <img src="img/logo/logo.png" alt="Calpe" class="w-12 h-12 object-contain transition-transform duration-300 group-hover:scale-110" />
-        <div class="hidden sm:block">
-          <span class="font-display font-700 text-steel-100 text-lg tracking-wide">CALPE</span>
-          <span class="block text-[10px] text-steel-400 tracking-[0.25em] uppercase -mt-1">Imagen Visual</span>
-        </div>
-      </a>
-      <div class="hidden md:flex items-center gap-8">
-        <a href="/"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium">Inicio</a>
-        <a href="/estructuras.html"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium">Estructuras</a>
-        <a href="/publicidad-led.html"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium">Publicidad
-          LED</a>
-        <a href="/#contacto"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium">Contacto</a>
-        <a href="https://wa.me/5492622521077?text=Hola%2C%20quiero%20consultar%20por%20impresiones" target="_blank"
-          rel="noopener"
-          class="ml-2 px-5 py-2.5 bg-gradient-to-r from-copper-600 to-copper-500 text-charcoal-950 font-display font-600 text-sm rounded-lg hover:from-copper-500 hover:to-copper-400 transition-all duration-300">Presupuesto</a>
+  <nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 px-6 py-3 lg:px-12 bg-charcoal-900/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto flex flex-col items-center">
+      <!-- Top Row: Mobile menu & Logo -->
+      <div class="w-full flex items-center justify-between md:justify-center">
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
+          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300 origin-center" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300" id="bar2"></span>
+          <span class="block w-4 h-0.5 bg-copper-500 transition-all duration-300 origin-center" id="bar3"></span>
+        </button>
+
+        <!-- Logo -->
+        <a href="index.html" class="flex flex-col items-center gap-1 group">
+          <img src="img/logo/logo.png" alt="Calpe" class="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
+        </a>
+
+        <!-- Dummy div for mobile balance -->
+        <div class="w-10 md:hidden"></div>
       </div>
-      <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
-        <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300 origin-center" id="bar1"></span>
-        <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300" id="bar2"></span>
-        <span class="block w-4 h-0.5 bg-copper-500 transition-all duration-300 origin-center" id="bar3"></span>
-      </button>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center justify-center gap-8 mt-3 w-full">
+        <a href="/" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Inicio</a>
+        <a href="/estructuras.html" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Estructuras</a>
+        <a href="/publicidad-led.html" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Publicidad LED</a>
+        <a href="/#contacto" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Contacto</a>
+        <a href="https://wa.me/5492622521077?text=Hola%2C%20quiero%20consultar%20por%20impresiones" target="_blank" rel="noopener" class="ml-4 px-5 py-2 bg-gradient-to-r from-copper-600 to-copper-500 text-charcoal-950 font-display font-600 text-sm rounded-lg hover:from-copper-500 hover:to-copper-400 transition-all duration-300">Presupuesto</a>
+      </div>
     </div>
+
+    <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-charcoal-900/98 backdrop-blur-xl border-t border-white/5 mt-4 rounded-b-2xl shadow-2xl">
       <div class="pt-6 pb-8 flex flex-col gap-4 px-6">
-        <a href="index.html" class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors">Inicio</a>
-        <a href="estructuras.html"
-          class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors">Estructuras</a>
-        <a href="publicidad-led.html"
-          class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors">Publicidad LED</a>
-        <a href="index.html#contacto"
-          class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors">Contacto</a>
+        <a href="index.html" class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors mobile-nav-link">Inicio</a>
+        <a href="estructuras.html" class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors mobile-nav-link">Estructuras</a>
+        <a href="publicidad-led.html" class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors mobile-nav-link">Publicidad LED</a>
+        <a href="index.html#contacto" class="text-steel-200 hover:text-copper-400 font-medium text-lg transition-colors mobile-nav-link">Contacto</a>
       </div>
     </div>
   </nav>
@@ -77,7 +76,7 @@
         Impresiones <span class="text-copper-400">Gran Formato</span>
       </h1>
       <p class="reveal reveal-delay-2 text-steel-300 text-lg md:text-xl max-w-2xl leading-relaxed">
-        Tecnología japonesa Mimaki en 160cm y 320cm. Vinilos, telas, lonas, esmerilados y papeles de máxima calidad.
+        Tecnología Mimaki (160cm y 320cm) para vinilos, lonas, telas y papeles de máxima calidad.
       </p>
     </div>
   </section>
@@ -89,9 +88,7 @@
         <div>
           <h2 class="reveal font-display font-700 text-2xl lg:text-3xl text-white mb-6">Máxima Calidad de Impresión</h2>
           <p class="reveal reveal-delay-1 text-steel-300 leading-relaxed mb-6">
-            Garantizamos la máxima calidad de impresión en vinilos, telas, lonas, esmerilados y papeles con tecnología
-            japonesa de <strong class="text-steel-100">Mimaki en 160cm y 320cm</strong>, y Konica Minolta para
-            folletería y presentaciones empresariales.
+            Garantizamos máxima calidad con <strong class="text-steel-100">tecnología Mimaki en 160cm y 320cm</strong> y Konica Minolta para presentaciones comerciales.
           </p>
 
           <div class="copper-line mb-8"></div>
@@ -157,8 +154,7 @@
               class="w-full aspect-video object-cover" />
           </div>
           <p class="reveal text-steel-400 text-sm leading-relaxed">
-            Microperforados de vidrieras, fondos de prensa, banderas, folletería empresarial. Estructuras de montaje
-            realizadas en taller metalúrgico propio para una solución integral de comunicación visual.
+            Microperforados, fondos de prensa y folletería. Estructuras montadas con taller propio para una solución integral.
           </p>
         </div>
       </div>
@@ -189,8 +185,8 @@
     <div class="max-w-7xl mx-auto">
       <div class="grid md:grid-cols-3 gap-8 items-center">
         <div>
-          <a href="index.html" class="flex items-center gap-3 mb-3">
-            <img src="img/logo/logo.png" alt="Calpe" class="w-10 h-10 object-contain" /><span class="font-display font-700 text-steel-100 tracking-wide">CALPE</span>
+          <a href="index.html" class="flex items-center gap-3 mb-3 group">
+            <img src="img/logo/logo.png" alt="Calpe" class="w-12 h-12 object-contain transition-transform group-hover:scale-105" />
           </a>
           <p class="text-steel-500 text-sm italic">"Nuestro mejor negocio es hacer visible el tuyo"</p>
         </div>

@@ -18,22 +18,14 @@
   <nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 px-6 py-3 lg:px-12 bg-charcoal-900/90 backdrop-blur-md">
     <div class="w-full flex items-center justify-between">
       
-      <!-- Left Space -->
-      <div class="flex-1 flex justify-start">
-        <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
-          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300 origin-center" id="bar1"></span>
-          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300" id="bar2"></span>
-          <span class="block w-4 h-0.5 bg-copper-500 transition-all duration-300 origin-center" id="bar3"></span>
-        </button>
-      </div>
-
-      <!-- Center Logo -->
+      <!-- Left Logo -->
       <a href="index.html" class="flex-shrink-0 flex items-center group">
         <img src="img/logo/logo.png" alt="Calpe" class="w-[70px] h-[70px] md:w-[88px] md:h-[88px] object-contain transition-transform duration-300 group-hover:scale-110" />
       </a>
 
-      <!-- Right Nav -->
-      <div class="flex-1 flex justify-end">
+      <!-- Right Nav / Mobile Menu Button -->
+      <div class="flex items-center justify-end">
+        <!-- Desktop Nav -->
         <div class="hidden md:flex items-center gap-6 lg:gap-8">
           <a href="./" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Inicio</a>
           <a href="impresiones.html" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Impresiones</a>
@@ -43,8 +35,13 @@
             Presupuesto
           </a>
         </div>
-        <!-- Dummy balance for mobile -->
-        <div class="md:hidden w-8"></div>
+        
+        <!-- Mobile Menu Button -->
+        <button id="mobile-menu-btn" class="md:hidden ml-4 flex flex-col gap-1.5 p-2" aria-label="Menú">
+          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300 origin-center" id="bar1"></span>
+          <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300" id="bar2"></span>
+          <span class="block w-4 h-0.5 bg-copper-500 transition-all duration-300 origin-center" id="bar3"></span>
+        </button>
       </div>
     </div>
 

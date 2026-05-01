@@ -16,41 +16,35 @@
 
   <!-- ═══════ NAVBAR ═══════ -->
   <nav id="navbar" class="navbar fixed top-0 left-0 w-full z-50 px-6 py-3 lg:px-12 bg-charcoal-900/90 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto flex flex-col items-center">
-      <!-- Top Row: Mobile menu & Logo -->
-      <div class="w-full flex items-center justify-between md:justify-center">
-        <!-- Mobile Menu Button -->
+    <div class="max-w-7xl mx-auto w-full flex items-center justify-between">
+      
+      <!-- Left Space -->
+      <div class="flex-1 flex justify-start">
         <button id="mobile-menu-btn" class="md:hidden flex flex-col gap-1.5 p-2" aria-label="Menú">
           <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300 origin-center" id="bar1"></span>
           <span class="block w-6 h-0.5 bg-steel-200 transition-all duration-300" id="bar2"></span>
           <span class="block w-4 h-0.5 bg-copper-500 transition-all duration-300 origin-center" id="bar3"></span>
         </button>
-
-        <!-- Logo -->
-        <a href="index.html" class="flex flex-col items-center gap-1 group">
-          <img src="img/logo/logo.png" alt="Calpe" class="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
-        </a>
-
-        <!-- Dummy div for mobile balance -->
-        <div class="w-10 md:hidden"></div>
       </div>
 
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center justify-center gap-8 mt-3 w-full">
-        <a href="./"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Inicio</a>
-        <a href="impresiones.html"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Impresiones</a>
-        <a href="publicidad-led.html"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Publicidad
-          LED</a>
-        <a href="./#contacto"
-          class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide">Contacto</a>
-        <a href="https://wa.me/5492622521077?text=Hola%2C%20quiero%20consultar%20por%20estructuras%20publicitarias"
-          target="_blank" rel="noopener"
-          class="ml-4 px-5 py-2 bg-gradient-to-r from-copper-600 to-copper-500 text-charcoal-950 font-display font-600 text-sm rounded-lg hover:from-copper-500 hover:to-copper-400 transition-all duration-300">
-          Presupuesto
-        </a>
+      <!-- Center Logo -->
+      <a href="index.html" class="flex-shrink-0 flex items-center group">
+        <img src="img/logo/logo.png" alt="Calpe" class="w-16 h-16 md:w-20 md:h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
+      </a>
+
+      <!-- Right Nav -->
+      <div class="flex-1 flex justify-end">
+        <div class="hidden md:flex items-center gap-6 lg:gap-8">
+          <a href="./" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Inicio</a>
+          <a href="impresiones.html" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Impresiones</a>
+          <a href="publicidad-led.html" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Publicidad LED</a>
+          <a href="./#contacto" class="text-sm text-steel-300 hover:text-copper-400 transition-colors duration-300 font-medium tracking-wide whitespace-nowrap">Contacto</a>
+          <a href="https://wa.me/5492622521077?text=Hola%2C%20quiero%20consultar%20por%20estructuras%20publicitarias" target="_blank" rel="noopener" class="px-5 py-2 bg-gradient-to-r from-copper-600 to-copper-500 text-charcoal-950 font-display font-600 text-sm rounded-lg hover:from-copper-500 hover:to-copper-400 transition-all duration-300 whitespace-nowrap">
+            Presupuesto
+          </a>
+        </div>
+        <!-- Dummy balance for mobile -->
+        <div class="md:hidden w-8"></div>
       </div>
     </div>
 

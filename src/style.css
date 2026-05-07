@@ -333,7 +333,7 @@ h1, h2, h3, h4, h5, h6 {
 .back-to-top {
   position: fixed;
   bottom: 6.5rem;
-  right: 2rem;
+  right: calc(2rem + 8px); /* centrado con el botón WA de 60px: (60-44)/2 = 8px */
   z-index: 998;
   width: 44px;
   height: 44px;

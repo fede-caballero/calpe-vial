@@ -95,8 +95,86 @@ function initCounters() {
   counters.forEach(counter => observer.observe(counter));
 }
 
+// ── Active nav indicator ──
+function initActiveNav() {
+  const filename = window.location.pathname.split('/').pop() || '';
+  const labels = {
+    'estructuras.html':    'Producción',
+    'impresiones.html':    'Gráfica y Cartelería',
+    'publicidad-led.html': 'Vía Pública',
+  };
+  const label = labels[filename];
+  if (!label) return;
+
+  // Desktop: inject current-page chip into the nav links row
+  const desktopNav = document.querySelector('.hidden.md\\:flex.items-center');
+  if (desktopNav) {
+    const chip = document.createElement('span');
+    chip.className = 'nav-current';
+    chip.textContent = label;
+    desktopNav.insertBefore(chip, desktopNav.firstChild);
+  }
+
+  // Mobile: inject section label at top of mobile dropdown
+  const mobileMenu = document.querySelector('#mobile-menu > div');
+  if (mobileMenu) {
+    const row = document.createElement('div');
+    row.className = 'nav-current-mobile';
+    row.innerHTML = `
+      <div style="width:3px;height:1rem;background:var(--color-copper-500);border-radius:2px;flex-shrink:0;"></div>
+      <span style="color:var(--color-copper-400);font-weight:600;font-size:0.9375rem;">${label}</span>
+    `;
+    mobileMenu.insertBefore(row, mobileMenu.firstChild);
+  }
+}
+
+
+// ── Back to top button ──
+function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Volver arriba');
+  btn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+  </svg>`;
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+
+// ── WhatsApp tooltip ──
+function initWaTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'wa-tooltip';
+  tooltip.textContent = '¿Consultás por WhatsApp?';
+  document.body.appendChild(tooltip);
+
+  const hide = () => tooltip.classList.remove('visible');
+
+  const showTimer = setTimeout(() => {
+    tooltip.classList.add('visible');
+    setTimeout(hide, 4000);
+  }, 3000);
+
+  document.querySelector('.whatsapp-float')?.addEventListener('click', () => {
+    clearTimeout(showTimer);
+    hide();
+  });
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initMobileMenu();
   initCounters();
+  initActiveNav();
+  initBackToTop();
+  initWaTooltip();
 });

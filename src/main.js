@@ -65,18 +65,8 @@ function initNavbar() {
   const navbar = document.getElementById('navbar');
   if (!navbar) return;
 
-  let lastScroll = 0;
-  
   window.addEventListener('scroll', () => {
-    const currentScroll = window.scrollY;
-    
-    if (currentScroll > 50) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-    
-    lastScroll = currentScroll;
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
   }, { passive: true });
 }
 
@@ -171,43 +161,51 @@ function initContactForm() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
-    
+
     const name = document.getElementById('name').value.trim();
     const phone = document.getElementById('phone').value.trim();
     const email = document.getElementById('email').value.trim();
     const service = document.getElementById('service').value;
     const message = document.getElementById('message').value.trim();
-    
-    // Build WhatsApp message
+
     const serviceLabels = {
-      'estructuras': 'Estructuras Publicitarias',
-      'impresiones': 'Impresiones de Gran Formato',
-      'led': 'Publicidad LED',
+      'estructuras': 'Producción y Estructuras',
+      'impresiones': 'Gráfica y Cartelería',
+      'led': 'Vía Pública',
       'integral': 'Proyecto Integral',
       'otro': 'Otro'
     };
-    
+
     let waMessage = `Hola, soy *${name}*.\n`;
     if (service) waMessage += `Estoy interesado/a en: *${serviceLabels[service] || service}*\n`;
     if (phone) waMessage += `Mi teléfono: ${phone}\n`;
     if (email) waMessage += `Mi email: ${email}\n`;
     waMessage += `\n${message}`;
-    
+
     const waUrl = `https://wa.me/5492622521077?text=${encodeURIComponent(waMessage)}`;
-    
-    // Visual feedback
-    btn.textContent = '✓ Redirigiendo a WhatsApp...';
+
+    btn.textContent = 'Enviando...';
     btn.style.background = 'linear-gradient(to right, #059669, #10b981)';
     btn.disabled = true;
-    
+
     setTimeout(() => {
       window.open(waUrl, '_blank');
-      setTimeout(() => {
-        btn.textContent = 'Enviar Consulta';
-        btn.style.background = '';
-        btn.disabled = false;
-        form.reset();
-      }, 2000);
+
+      // Success state
+      form.innerHTML = `
+        <div class="text-center py-10">
+          <div class="w-16 h-16 rounded-full bg-green-500/15 border border-green-500/30 flex items-center justify-center mx-auto mb-5">
+            <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          <h3 style="font-family:var(--font-display);font-weight:700;font-size:1.25rem;color:#e8e9ec;margin-bottom:0.5rem;">¡Consulta enviada!</h3>
+          <p style="color:var(--color-steel-400);font-size:0.9rem;margin-bottom:2rem;">Te abrimos WhatsApp con tu mensaje. Respondemos en menos de 24 horas.</p>
+          <button onclick="location.reload()" style="padding:0.625rem 1.5rem;border:1px solid rgba(232,125,21,0.4);border-radius:0.75rem;color:var(--color-copper-400);font-size:0.875rem;background:transparent;cursor:pointer;transition:border-color 0.3s">
+            Enviar otra consulta
+          </button>
+        </div>
+      `;
     }, 500);
   });
 }
@@ -296,6 +294,16 @@ function initLightbox() {
     if (e.key === 'ArrowLeft') navigate(-1);
     if (e.key === 'ArrowRight') navigate(1);
   });
+
+  // Swipe support on mobile
+  let touchStartX = 0;
+  overlay.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+  overlay.addEventListener('touchend', (e) => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) navigate(diff > 0 ? 1 : -1);
+  }, { passive: true });
 }
 
 
@@ -320,6 +328,50 @@ function initSmoothScroll() {
 }
 
 
+// ── Back to top button ──
+function initBackToTop() {
+  const btn = document.createElement('button');
+  btn.className = 'back-to-top';
+  btn.setAttribute('aria-label', 'Volver arriba');
+  btn.innerHTML = `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/>
+  </svg>`;
+  document.body.appendChild(btn);
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+
+// ── WhatsApp tooltip ──
+function initWaTooltip() {
+  const tooltip = document.createElement('div');
+  tooltip.className = 'wa-tooltip';
+  tooltip.textContent = '¿Consultás por WhatsApp?';
+  document.body.appendChild(tooltip);
+
+  const show = () => tooltip.classList.add('visible');
+  const hide = () => tooltip.classList.remove('visible');
+
+  // Appear after 3s, auto-hide after 4s more
+  const showTimer = setTimeout(() => {
+    show();
+    setTimeout(hide, 4000);
+  }, 3000);
+
+  // Hide immediately if user clicks the WA button
+  document.querySelector('.whatsapp-float')?.addEventListener('click', () => {
+    clearTimeout(showTimer);
+    hide();
+  });
+}
+
+
 // ── Initialize everything ──
 document.addEventListener('DOMContentLoaded', () => {
   populateLogos();
@@ -330,4 +382,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initLightbox();
   initSmoothScroll();
+  initBackToTop();
+  initWaTooltip();
 });

@@ -170,6 +170,20 @@ function initWaTooltip() {
 }
 
 
+// ── Image rotator (crossfade carousel) ──
+function initImageRotators() {
+  document.querySelectorAll('.img-rotator').forEach(rotator => {
+    const imgs = Array.from(rotator.querySelectorAll('img'));
+    if (imgs.length < 2) return;
+    let current = 0;
+    setInterval(() => {
+      imgs[current].style.opacity = '0';
+      current = (current + 1) % imgs.length;
+      imgs[current].style.opacity = '1';
+    }, 4000);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initMobileMenu();
@@ -177,4 +191,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initActiveNav();
   initBackToTop();
   initWaTooltip();
+  initImageRotators();
 });

@@ -100,8 +100,8 @@ function initActiveNav() {
   const filename = window.location.pathname.split('/').pop() || '';
   const labels = {
     'estructuras.html':    'Producción',
-    'impresiones.html':    'Gráfica y Cartelería',
-    'publicidad-led.html': 'Vía Pública',
+    'grafica-carteleria.html':    'Gráfica y Cartelería',
+    'via-publica.html': 'Vía Pública',
   };
   const label = labels[filename];
   if (!label) return;

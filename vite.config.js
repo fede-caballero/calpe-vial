@@ -12,8 +12,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         estructuras: resolve(__dirname, 'estructuras.html'),
-        impresiones: resolve(__dirname, 'impresiones.html'),
-        'publicidad-led': resolve(__dirname, 'publicidad-led.html'),
+        'grafica-carteleria': resolve(__dirname, 'grafica-carteleria.html'),
+        'via-publica': resolve(__dirname, 'via-publica.html'),
       },
     },
   },
